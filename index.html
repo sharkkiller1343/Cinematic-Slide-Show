@@ -13,8 +13,18 @@
             }
             create() {
                 this.add.text(10,10,"Click anywhere to begin.")
-                this.input.on('pointerdown', () => this.scene.start('logo'));
+                this.input.on('pointerdown', () => this.scene.start('load'));
                 
+            }
+        }
+
+        class Load extends Phaser.Scene{
+            constructor() {
+                super('load');
+            }    
+            create() {
+                this.add.text(10,10,"I'm the loading scene.")
+                this.input.on('pointerdown', () => this.scene.start('logo'));
             }
         }
 
@@ -24,13 +34,43 @@
             }    
             create() {
                 this.add.text(10,10,"I'm the logo scene.")
+                this.input.on('pointerdown', () => this.scene.start('menu'));
             }
-
         }
+
+        class Menu extends Phaser.Scene{
+            constructor() {
+                super('menu');
+            }    
+            create() {
+                this.add.text(10,10,"I'm the menu scene.")
+                this.input.on('pointerdown', () => this.scene.start('save'));
+            }
+        }
+
+        class Save extends Phaser.Scene{
+            constructor() {
+                super('save');
+            }    
+            create() {
+                this.add.text(10,10,"I'm the save scene.")
+                this.input.on('pointerdown', () => this.scene.start('game'));
+            }
+        }
+
+        class Game extends Phaser.Scene{
+            constructor() {
+                super('game');
+            }    
+            create() {
+                this.add.text(10,10,"I'm the game scene.")
+            }
+        }
+
         new Phaser.Game({
             width: 640,
             height: 480,
-            scene: [Intro, Logo], 
+            scene: [Intro, Load, Logo, Menu, Save, Game] 
         });
     </script>
 </head>
