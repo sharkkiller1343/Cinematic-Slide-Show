@@ -12,7 +12,7 @@
                 super('intro');
             }
             create() {
-                this.add.text(10,10,"Click anywhere to begin and when ''TAP'' appear click to proceed.")
+                this.add.text(10,10,"Click anywhere to begin and when ''TAP'' appear click to proceed.");
                 this.input.on('pointerdown', () => this.scene.start('load'));
                 
             }
@@ -23,8 +23,8 @@
                 super('load');
             }    
             create() {
-                this.add.text(10,580,"Loading...")
-                this.add.text(760,580,"TAP")
+                this.add.text(10,580,"Loading...");
+                this.add.text(760,580,"TAP");
                 this.input.on('pointerdown', () => this.scene.start('logo'));
             }
         }
@@ -33,8 +33,15 @@
             constructor() {
                 super('logo');
             }    
+            preload() {
+                this.load.image('shark', 'assets/Shark.png');
+            }
             create() {
-                this.add.text(10,10,"I'm the logo scene.")
+                this.sharkObject = this.add.image(400,300,'shark');
+                this.sharkObject.setScale(0.6);
+                this.logotext = this.add.text(220,100,"Shark Inc", {font: "60px",}); //color: "0x000000"
+                this.textObject = this.add.text(180,430,"Present", {font: "100px",}); //color: "0x000000"
+                this.cameras.main.setBackgroundColor('0x000000'); //'0xffffff'
                 this.input.on('pointerdown', () => this.scene.start('menu'));
             }
         }
@@ -44,7 +51,7 @@
                 super('menu');
             }    
             create() {
-                this.add.text(10,10,"I'm the menu scene.")
+                this.add.text(10,10,"I'm the menu scene.");
                 this.input.on('pointerdown', () => this.scene.start('save'));
             }
         }
@@ -54,7 +61,7 @@
                 super('save');
             }    
             create() {
-                this.add.text(10,10,"I'm the save scene.")
+                this.add.text(10,10,"I'm the save scene.");
                 this.input.on('pointerdown', () => this.scene.start('game'));
             }
         }
@@ -64,14 +71,14 @@
                 super('game');
             }    
             create() {
-                this.add.text(10,10,"I'm the game scene.")
+                this.add.text(10,10,"I'm the game scene.");
             }
         }
 
         new Phaser.Game({
             width: 800,
             height: 600,
-            scene: [Intro, Load, Logo, Menu, Save, Game] 
+            scene: [Logo] //Intro, Load, Logo, Menu, Save, Game
         });
     </script>
 </head>
