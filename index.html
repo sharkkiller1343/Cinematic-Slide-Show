@@ -12,7 +12,7 @@
                 super('intro');
             }
             create() {
-                this.add.text(10,10,"Click anywhere to begin.")
+                this.add.text(10,10,"Click anywhere to begin and when ''TAP'' appear click to proceed.")
                 this.input.on('pointerdown', () => this.scene.start('load'));
                 
             }
@@ -23,7 +23,8 @@
                 super('load');
             }    
             create() {
-                this.add.text(10,10,"I'm the loading scene.")
+                this.add.text(10,580,"Loading...")
+                this.add.text(760,580,"TAP")
                 this.input.on('pointerdown', () => this.scene.start('logo'));
             }
         }
