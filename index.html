@@ -101,6 +101,7 @@
             }    
             preload() {
                 this.load.image('Oceanmenu', 'assets/Oceanmenu.png');
+                this.load.audio('water', ['audio/Sink.wav']);
             }
             create() {
                 this.Oceanmenu = this.add.image(400,300,'Oceanmenu');
@@ -144,6 +145,8 @@
                     y: 295,
                     duration: 7300,
                 })
+                this.water = this.sound.add('water', {loop: false});
+                this.water.play();
                 this.cameras.main.setBackgroundColor('0xffffff'); //'0xffffff'
                 this.time.delayedCall(9000, () => {
                     this.cameras.main.fadeOut(2000,0,0,0);
@@ -158,6 +161,7 @@
             }    
             preload() {
                 this.load.image('Oceansave', 'assets/Oceansave.png');
+                this.load.audio('Bubble', ['audio/Bubble.wav']);
             }    
             create() {
                 this.Oceansave = this.add.image(1300,300,'Oceansave');
@@ -202,6 +206,8 @@
                     y: 145,
                     duration: 6300,
                 })
+                this.bubble = this.sound.add('Bubble', {loop: true});
+                this.bubble.play();
                 this.time.delayedCall(8000, () => {
                     this.cameras.main.fadeOut(2000,0,0,0);
                 })
