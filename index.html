@@ -39,9 +39,32 @@
             create() {
                 this.sharkObject = this.add.image(400,300,'shark');
                 this.sharkObject.setScale(0.6);
-                this.logotext = this.add.text(220,100,"Shark Inc", {font: "60px",}); //color: "0x000000"
-                this.textObject = this.add.text(180,430,"Present", {font: "100px",}); //color: "0x000000"
-                this.cameras.main.setBackgroundColor('0x000000'); //'0xffffff'
+                this.tweens.add({
+                    targets: this.sharkObject,
+                    alpha: {from: 0, to: 1},
+                    duration: 5000,
+                })
+                this.logotext = this.add.text(220,100,"Shark Inc", {font: "60px", color: "0x000000"}); //color: "0x000000"
+                this.tweens.add({
+                    targets: this.logotext,
+                    alpha: {from: 0, to: 1},
+                    duration: 5000,
+                })
+                this.circle1 = this.add.circle(560,110,20, "0x000000")
+                this.tweens.add({
+                    targets: this.circle1,
+                    alpha: {from: 0, to: 1},
+                    scale: {from: 1, to: 0},
+                    duration: 5000,
+                })
+                this.textObject = this.add.text(180,1000,"Present", {font: "100px", color: "0x000000"}); //color: "0x000000"
+                this.tweens.add({
+                    targets: this.textObject,
+                    x: 180,
+                    y: 430,
+                    duration: 5000,
+                })
+                this.cameras.main.setBackgroundColor('0xffffff'); //'0xffffff'
                 this.input.on('pointerdown', () => this.scene.start('menu'));
             }
         }
@@ -50,6 +73,9 @@
             constructor() {
                 super('menu');
             }    
+            preload() {
+                this.load.image('Oceanmenu', 'assets/Oceanmenu.png');
+            }
             create() {
                 this.add.text(10,10,"I'm the menu scene.");
                 this.input.on('pointerdown', () => this.scene.start('save'));
@@ -60,6 +86,9 @@
             constructor() {
                 super('save');
             }    
+            preload() {
+                this.load.image('Oceansave', 'assets/Oceansave.png');
+            }    
             create() {
                 this.add.text(10,10,"I'm the save scene.");
                 this.input.on('pointerdown', () => this.scene.start('game'));
@@ -69,7 +98,10 @@
         class Game extends Phaser.Scene{
             constructor() {
                 super('game');
-            }    
+            } 
+            preload() {
+                this.load.image('Oceangame', 'assets/Oceangame.png');
+            }       
             create() {
                 this.add.text(10,10,"I'm the game scene.");
             }
