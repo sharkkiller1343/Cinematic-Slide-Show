@@ -12,14 +12,7 @@
                 super('intro');
             }
             create() {
-                this.add.text(10,10,"Click anywhere to begin and when ''TAP'' appear click to proceed the next slide.");
-                this.tap = this.add.text(760,580,"TAP");
-                this.tweens.add({
-                targets: this.tap,
-                    alpha: {from: 0, to: 1},
-                    duration: 2000,
-                    repeat: -1,
-                })
+                this.add.text(10,10,"Click anywhere to begin and when the screen fade click to procced");
                 this.input.on('pointerdown', () => this.scene.start('load'));
                 
             }
@@ -52,12 +45,8 @@
                     duration: 1950,
                     repeat: -1,
                 })
-                this.tap = this.add.text(760,580,"TAP");
-                this.tweens.add({
-                targets: this.tap,
-                    alpha: {from: 0, to: 1},
-                    duration: 2000,
-                    repeat: -1,
+                this.time.delayedCall(6000, () => {
+                    this.cameras.main.fadeOut(2000,255,255,255);
                 })
                 this.input.on('pointerdown', () => this.scene.start('logo'));
             }
@@ -98,14 +87,10 @@
                     y: 430,
                     duration: 5000,
                 })
-                this.tap = this.add.text(760,580,"TAP", {color: "0x000000"});
-                this.tweens.add({
-                targets: this.tap,
-                    alpha: {from: 0, to: 1},
-                    duration: 2000,
-                    repeat: -1,
-                })
                 this.cameras.main.setBackgroundColor('0xffffff'); //'0xffffff'
+                this.time.delayedCall(6000, () => {
+                    this.cameras.main.fadeOut(2000,0,0,0);
+                })
                 this.input.on('pointerdown', () => this.scene.start('menu'));
             }
         }
@@ -159,12 +144,9 @@
                     y: 295,
                     duration: 7300,
                 })
-                this.tap = this.add.text(760,580,"TAP");
-                this.tweens.add({
-                targets: this.tap,
-                    alpha: {from: 0, to: 1},
-                    duration: 2000,
-                    repeat: -1,
+                this.cameras.main.setBackgroundColor('0xffffff'); //'0xffffff'
+                this.time.delayedCall(9000, () => {
+                    this.cameras.main.fadeOut(2000,0,0,0);
                 })
                 this.input.on('pointerdown', () => this.scene.start('save'));
             }
@@ -220,12 +202,8 @@
                     y: 145,
                     duration: 6300,
                 })
-                this.tap = this.add.text(760,580,"TAP");
-                this.tweens.add({
-                targets: this.tap,
-                    alpha: {from: 0, to: 1},
-                    duration: 2000,
-                    repeat: -1,
+                this.time.delayedCall(8000, () => {
+                    this.cameras.main.fadeOut(2000,0,0,0);
                 })
                 this.input.on('pointerdown', () => this.scene.start('game'));
             }
@@ -252,11 +230,13 @@
                     alpha: {from: 0, to: 1},
                     duration: 5000,
                 })
-                this.Theend = this.add.text(150,200,"THE END", {font: "100px Aqua"});
-                this.tweens.add({
+                this.time.delayedCall(7000, () => {
+                    this.Theend = this.add.text(150,200,"THE END", {font: "100px Aqua"});
+                    this.tweens.add({
                     targets: this.Theend,
                     alpha: {from: 0, to: 1},
-                    duration: 10000,
+                    duration: 5000,
+                })
                 })
             }
         }
