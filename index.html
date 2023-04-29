@@ -130,7 +130,48 @@
                 this.load.image('Oceansave', 'assets/Oceansave.png');
             }    
             create() {
-                this.add.text(10,10,"I'm the save scene.");
+                this.Oceansave = this.add.image(1300,300,'Oceansave');
+                this.Oceansave.setScale(0.6);
+                this.tweens.add({
+                    targets: this.Oceansave,
+                    x: 500,
+                    y: 300,
+                    duration: 3000,
+                })
+                this.Save = this.add.text(64,50,"Save", {font: "60px Aqua"});
+                this.tweens.add({
+                    targets: this.Save,
+                    alpha: {from: 0, to: 1},
+                    duration: 4000,
+                })
+                this.File1 = this.add.text(-1000,150,"File 1", {font: "60px Aqua"});
+                this.tweens.add({
+                    targets: this.File1,
+                    x: 64,
+                    y: 150,
+                    duration: 3800,
+                })
+                this.File2 = this.add.text(-1100,300,"File 2", {font: "60px Aqua"});
+                this.tweens.add({
+                    targets: this.File2,
+                    x: 64,
+                    y: 300,
+                    duration: 4800,
+                })
+                this.File3 = this.add.text(-1200,450,"File 3", {font: "60px Aqua"});
+                this.tweens.add({
+                    targets: this.File3,
+                    x: 64,
+                    y: 450,
+                    duration: 5800,
+                })
+                this.arrow2 = this.add.text(-1300,145,">", {font: "60px Aqua"});
+                this.tweens.add({
+                    targets: this.arrow2,
+                    x: 20,
+                    y: 145,
+                    duration: 6300,
+                })
                 this.input.on('pointerdown', () => this.scene.start('game'));
             }
         }
@@ -150,7 +191,7 @@
         new Phaser.Game({
             width: 800,
             height: 600,
-            scene: [Menu] //Intro, Load, Logo, Menu, Save, Game
+            scene: [Save] //Intro, Load, Logo, Menu, Save, Game
         });
     </script>
 </head>
