@@ -77,7 +77,47 @@
                 this.load.image('Oceanmenu', 'assets/Oceanmenu.png');
             }
             create() {
-                this.add.text(10,10,"I'm the menu scene.");
+                this.Oceanmenu = this.add.image(400,300,'Oceanmenu');
+                this.Oceanmenu.setScale(0.8);
+                this.tweens.add({
+                    targets: this.Oceanmenu,
+                    alpha: {from: 0, to: 1},
+                    duration: 5000,
+                })
+                this.Oceantitle = this.add.text(80,150,"OCEAN VIEW", {font: "100px Aqua"});
+                this.tweens.add({
+                    targets: this.Oceantitle,
+                    alpha: {from: 0, to: 1},
+                    duration: 5000,
+                })
+                this.LetterStart = this.add.text(350,1000,"Start", {font: "70px Aqua"});
+                this.tweens.add({
+                    targets: this.LetterStart,
+                    x: 350,
+                    y: 300,
+                    duration: 7000,
+                })
+                this.LetterOption = this.add.text(350,1100,"Option", {font: "70px Aqua"});
+                this.tweens.add({
+                    targets: this.LetterOption,
+                    x: 350,
+                    y: 400,
+                    duration: 7000,
+                })
+                this.LetterCredit = this.add.text(350,1200,"Credit", {font: "70px Aqua"});
+                this.tweens.add({
+                    targets: this.LetterCredit,
+                    x: 350,
+                    y: 500,
+                    duration: 7000,
+                })
+                this.arrow1 = this.add.text(-290,295,">", {font: "70px Aqua"});
+                this.tweens.add({
+                    targets: this.arrow1,
+                    x: 290,
+                    y: 295,
+                    duration: 7300,
+                })
                 this.input.on('pointerdown', () => this.scene.start('save'));
             }
         }
@@ -110,7 +150,7 @@
         new Phaser.Game({
             width: 800,
             height: 600,
-            scene: [Load, Logo] //Intro, Load, Logo, Menu, Save, Game
+            scene: [Menu] //Intro, Load, Logo, Menu, Save, Game
         });
     </script>
 </head>
