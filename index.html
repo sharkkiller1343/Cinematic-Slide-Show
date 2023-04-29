@@ -12,7 +12,14 @@
                 super('intro');
             }
             create() {
-                this.add.text(10,10,"Click anywhere to begin and when ''TAP'' appear click to proceed.");
+                this.add.text(10,10,"Click anywhere to begin and when ''TAP'' appear click to proceed the next slide.");
+                this.tap = this.add.text(760,580,"TAP");
+                this.tweens.add({
+                targets: this.tap,
+                    alpha: {from: 0, to: 1},
+                    duration: 2000,
+                    repeat: -1,
+                })
                 this.input.on('pointerdown', () => this.scene.start('load'));
                 
             }
@@ -23,8 +30,35 @@
                 super('load');
             }    
             create() {
-                this.add.text(10,580,"Loading...");
-                this.add.text(760,580,"TAP");
+                this.add.text(10,565,"Loading",  {font: "30px Aqua"});
+                this.circle1 = this.add.circle(120,590,4,'0xffffff');
+                this.tweens.add({
+                targets: this.circle1,
+                    scale:0,
+                    duration: 1850,
+                    repeat: -1,
+                })
+                this.circle2 = this.add.circle(135,590,4,'0xffffff');
+                this.tweens.add({
+                targets: this.circle2,
+                    scale:0,
+                    duration: 1900,
+                    repeat: -1,
+                })
+                this.circle3 = this.add.circle(150,590,4,'0xffffff');
+                this.tweens.add({
+                targets: this.circle3,
+                    scale:0,
+                    duration: 1950,
+                    repeat: -1,
+                })
+                this.tap = this.add.text(760,580,"TAP");
+                this.tweens.add({
+                targets: this.tap,
+                    alpha: {from: 0, to: 1},
+                    duration: 2000,
+                    repeat: -1,
+                })
                 this.input.on('pointerdown', () => this.scene.start('logo'));
             }
         }
@@ -63,6 +97,13 @@
                     x: 180,
                     y: 430,
                     duration: 5000,
+                })
+                this.tap = this.add.text(760,580,"TAP", {color: "0x000000"});
+                this.tweens.add({
+                targets: this.tap,
+                    alpha: {from: 0, to: 1},
+                    duration: 2000,
+                    repeat: -1,
                 })
                 this.cameras.main.setBackgroundColor('0xffffff'); //'0xffffff'
                 this.input.on('pointerdown', () => this.scene.start('menu'));
@@ -118,6 +159,13 @@
                     y: 295,
                     duration: 7300,
                 })
+                this.tap = this.add.text(760,580,"TAP");
+                this.tweens.add({
+                targets: this.tap,
+                    alpha: {from: 0, to: 1},
+                    duration: 2000,
+                    repeat: -1,
+                })
                 this.input.on('pointerdown', () => this.scene.start('save'));
             }
         }
@@ -172,6 +220,13 @@
                     y: 145,
                     duration: 6300,
                 })
+                this.tap = this.add.text(760,580,"TAP");
+                this.tweens.add({
+                targets: this.tap,
+                    alpha: {from: 0, to: 1},
+                    duration: 2000,
+                    repeat: -1,
+                })
                 this.input.on('pointerdown', () => this.scene.start('game'));
             }
         }
@@ -209,7 +264,7 @@
         new Phaser.Game({
             width: 800,
             height: 600,
-            scene: [Game] //Intro, Load, Logo, Menu, Save, Game
+            scene: [Intro, Load, Logo, Menu, Save, Game] //Intro, Load, Logo, Menu, Save, Game
         });
     </script>
 </head>
