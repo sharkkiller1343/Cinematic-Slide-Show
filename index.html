@@ -184,14 +184,32 @@
                 this.load.image('Oceangame', 'assets/Oceangame.png');
             }       
             create() {
-                this.add.text(10,10,"I'm the game scene.");
+                this.Oceangame = this.add.image(400,300,'Oceangame');
+                this.Oceangame.setScale(0.8);
+                this.tweens.add({
+                    targets: this.Oceangame,
+                    alpha: {from: 0, to: 1},
+                    duration: 5000,
+                })
+                this.textlist = this.add.text(5,580,"Here under the sea of the great ocean water there are fishes floating at the sea and many are swimming in the water", {font: " 17px Aqua"});
+                this.tweens.add({
+                    targets: this.textlist,
+                    alpha: {from: 0, to: 1},
+                    duration: 5000,
+                })
+                this.Theend = this.add.text(150,200,"THE END", {font: "100px Aqua"});
+                this.tweens.add({
+                    targets: this.Theend,
+                    alpha: {from: 0, to: 1},
+                    duration: 10000,
+                })
             }
         }
 
         new Phaser.Game({
             width: 800,
             height: 600,
-            scene: [Save] //Intro, Load, Logo, Menu, Save, Game
+            scene: [Game] //Intro, Load, Logo, Menu, Save, Game
         });
     </script>
 </head>
